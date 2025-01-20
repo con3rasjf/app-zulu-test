@@ -1,5 +1,5 @@
 module "lbda_apigw_waf" {
-  source = "github.com/con3rasjf/tf-aws-lambda-apigw-waf?ref=release_module"
+  source = "github.com/con3rasjf/tf-aws-lambda-apigw-waf?ref=main"
 
   providers = {
     aws = aws.virginia
@@ -9,9 +9,10 @@ module "lbda_apigw_waf" {
   memory_size   = 128
   runtime       = "python3.9"
   function_env = {
-    "zulu" : "Transacción exitosa"
+    "zulu" : "Zulu"
   }
   api_name        = "api_zulu"
   api_description = "API de Zulu"
   rate_limit      = 10
+  email_receiver  = "con3rasjf@gmail.com"
 }

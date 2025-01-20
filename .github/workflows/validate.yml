@@ -20,7 +20,13 @@ jobs:
       - name: Terraform format
         run: terraform fmt -check -recursive
       - name: Terraform init
-        run: terraform init
+        run: |
+            terraform init \
+                -input=false \
+                -backend-config="bucket=jf-terraform-state-ts" \
+                -backend-config="key=infra.tfstate" \
+                -backend-config="region=us-east-1" \
+                -backend-config="encrypt=true"
       - name: Terraform validate
         run: terraform validate
           
